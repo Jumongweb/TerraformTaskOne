@@ -23,6 +23,9 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
+    - name: Import Existing Security Group (Optional)
+      run: terraform import aws_security_group.web_sg sg-xxxxxxxx || echo "Security group does not exist, skipping import."
+
     - name: Terraform Plan
       run: terraform plan -out=tfplan
 
